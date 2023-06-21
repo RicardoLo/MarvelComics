@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+     xmlns:resources="clr-namespace:MarvelComics.Resources"
+    x:Class="MarvelComics.Views.ComicDetailPage">
+
+     <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_share_white_24dp" Clicked="OnShareEventClicked" />
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.Content>
+        <Grid>
+            <ContentView
+                x:Name="HeaderPanel"
+                BackgroundColor="{StaticResource GreenPrimary}"
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand"
+                Margin="0,-75,0,0">
+                <ContentView.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0,0,0,0" />
+                        <On Platform="iOS" Value="0,0,0,0" />
+                    </OnPlatform>
+                </ContentView.Margin>
+
+                <ffimageloading:CachedImage
+                    Source = "{Binding Comic.Thumbnail,Converter = {StaticResource thumbnailConverter}}" 
+                    Aspect="AspectFill"
+                    HeightRequest="250"
+					HorizontalOptions="FillAndExpand"
+                    LoadingPlaceholder="marvel_logo" 
+					VerticalOptions="Start"
+					Opacity="1">
+                </ffimageloading:CachedImage>
+            </ContentView>
+
+            <ScrollView
+                x:Name="ParallaxScroll" 
+                VerticalOptions="FillAndExpand" 
+                HorizontalOptions="FillAndExpand">
+
+                <Grid
+				    RowSpacing="0"
+				    VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="250" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+
+                    <AbsoluteLayout Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" HeightRequest="250">
+
+                        <BoxView BackgroundColor="{StaticResource BlueCustom}" Opacity="0.80"    AbsoluteLayout.LayoutBounds="0,1,1,.20" 
+                                  AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand"  />
+
+                        <StackLayout Orientation="Horizontal"  AbsoluteLayout.LayoutBounds="0,1,1,.20" 
+                                  AbsoluteLayout.LayoutFlags="All"  HorizontalOptions="FillAndExpand" >
+
+                            <Label Text="{Binding Comic.Title}"
+                                   Margin="10"
+                                   LineBreakMode="TailTruncation"
+                                   FontFamily="Roboto-Bold"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="22"
+                                   TextColor="{StaticResource WhiteCustom}"/>
+
+                        </StackLayout>
+                    </AbsoluteLayout>
+
+
+                    <!--TODO: apply common styles-->
+                    <Grid                    
+                        BackgroundColor="{StaticResource GreenPrimary}" Grid.Row="1">
+                        <StackLayout Orientation="Vertical" Spacing="5" Margin="10">
+
+                              <Label
+                            Text="{x:Static resources:AppResources.Format}"
+                            FontFamily="Roboto-Regular"
+                            FontSize="Small"
+                            TextColor="{StaticResource WhiteCustom}" />
+                             <Label
+                            Text="{Binding Comic.Format}"
+                            FontFamily="Roboto-Regular"
+                            FontSize="Small"
+                            TextColor="{StaticResource GrayCustom}" />
+                             <Label
+                            Text="{x:Static resources:AppResources.DiamondCode}"
+                            FontFamily="Roboto-Regular"
+                            FontSize="Small"
+                            TextColor="{StaticResource WhiteCustom}" />
+                             <Label
+                            Text="{Binding Comic.DiamondCode}"
+                            FontFamily="Roboto-Regular"
+                            FontSize="Small"
+                            TextColor="{StaticResource GrayCustom}" />
+                             <Label
+                            Text="{x:Static resources:AppResources.Ean}"
+                            FontFamily="Roboto-Regular"
+                            FontSize="Small"
+                            TextColor="{StaticResource WhiteCustom}" />
+                             <Label
+                            Text="{Binding Comic.Ean}"
+                            FontFamily="Roboto-Regular"
+                            FontSize="Small"
+                            TextColor="{StaticResource GrayCustom}" />
+                                <Label
+                            Text="{x:Static resources:AppResources.Issn}"
+                            FontFamily="Roboto-Regular"
+                            FontSize="Small"
+                            TextColor="{StaticResource WhiteCustom}" />
+                             <Label
+                            Text="{Binding Comic.Issn}"
+                            FontFamily="Roboto-Regular"
+                            FontSize="Small"
+                            TextColor="{StaticResource GrayCustom}" />
+                                <Label
+                            Text="{x:Static resources:AppResources.PageCount}"
+                            FontFamily="Roboto-Regular"
+                            FontSize="Small"
+                            TextColor="{StaticResource WhiteCustom}" />
+                             <Label
+                            Text="{Binding Comic.PageCount}"
+                            FontFamily="Roboto-Regular"
+                            FontSize="Small"
+                            TextColor="{StaticResource GrayCustom}" />
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid                    
+                        BackgroundColor="{StaticResource GreenPrimary}"
+					    Grid.Row="2">
+                        <StackLayout Orientation="Vertical" Spacing="5"  Margin="10">
+                             <Label
+                            Text="{x:Static resources:AppResources.Description}"
+                            FontFamily="Roboto-Regular"
+                            FontSize="Small"
+                            TextColor="{StaticResource WhiteCustom}" />
+                             <Label
+                            Text="{Binding Comic.Description}"
+                            FontFamily="Roboto-Regular"
+                            FontSize="Small"
+                            TextColor="{StaticResource GrayCustom}" />
+
+                        </StackLayout>
+                        
+
+                    </Grid>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

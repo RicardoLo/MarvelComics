@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MarvelComics.Converters"
+             x:Class="MarvelComics.App">
+    <Application.Resources>
+         <ResourceDictionary>
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#4a94a8</Color>
+            <Color x:Key="GreenPrimary">#bcddc0</Color>
+            <Color x:Key="GreenCustom">#58baa3</Color>
+            <Color x:Key="GrayCustom">#4e4d4d</Color>
+            <Color x:Key="YellowCustom">#ffd539</Color>
+            <Color x:Key="BlueCustom">#4a94a8</Color>
+            <Color x:Key="DarkBlueCustom">#397281</Color>
+            <Color x:Key="WhiteCustom">#f2f2f2</Color>
+            <Color x:Key="LabelColor2">#4e4d4d</Color>
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource GreenCustom}" />
+                <Setter Property="BarTextColor" Value="#f2f2f2" />
+            </Style>
+
+            <local:ThumbnailConverter x:Key="thumbnailConverter" />
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

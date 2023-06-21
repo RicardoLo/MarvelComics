@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    x:Class="MarvelComics.Views.ComicListPage"
+	Title="{Binding Title}">
+   <ContentPage.Padding>
+		<OnPlatform x:TypeArguments="Thickness">
+			<OnPlatform.iOS>
+        0, 10, 0, 0
+      </OnPlatform.iOS>
+			<OnPlatform.Android>
+        5, 10, 0, 0
+      </OnPlatform.Android>
+		</OnPlatform>
+	</ContentPage.Padding>
+
+     <ContentPage.ToolbarItems>
+        <ToolbarItem  Icon="icono_lupa" Clicked="OnImageSearchTapped"  />
+        <ToolbarItem  Icon="filter" Clicked="OnFilterTapped"  />
+    </ContentPage.ToolbarItems>
+
+	<ContentPage.Content>
+		<StackLayout >
+			<SearchBar
+                x:Name="SearchBarComics"
+				Text="{Binding SearchText}"
+                Opacity="0.90"
+                IsVisible="false"
+                FontFamily="Roboto-Regular"
+				SearchCommand="{Binding SearchByName}">
+
+
+            </SearchBar>
+
+			<ListView x:Name="ListComics"
+             HorizontalOptions="FillAndExpand"
+             VerticalOptions="FillAndExpand"
+             ItemsSource="{Binding ComicList}"
+             CachingStrategy="RecycleElement"
+             RowHeight="60"
+             IsRefreshing="{Binding IsBusy}"
+             ItemSelected="OnItemSelected"
+             SeparatorVisibility="None">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+                     <Frame Margin="5" BorderColor="{StaticResource DarkBlueCustom}" IsClippedToBounds="True" Padding="0" CornerRadius="6"  HasShadow="False"  BackgroundColor="{StaticResource GreenPrimary}">
+
+					  <StackLayout Orientation="Horizontal" Padding="2" Spacing="4"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+
+                                        <!--<ffimageloading:CachedImage
+                                                WidthRequest="60"
+                                                HeightRequest="60"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Start"
+                                                LoadingPlaceholder="marvel" 
+                                                Aspect="AspectFill"
+                                                Source = "{Binding Thumbnail,
+                                                     Converter = {StaticResource thumbnailConverter}}" >
+                                                 <ffimageloading:CachedImage.Transformations>
+                                                    <fftransformations:RoundedTransformation Radius="6"/>
+                                                </ffimageloading:CachedImage.Transformations>
+                                       </ffimageloading:CachedImage>-->
+
+                          <Frame Padding="0" CornerRadius="5" IsClippedToBounds="True" HasShadow="False"  >
+                              <ffimageloading:CachedImage
+                                                WidthRequest="60"
+                                                HeightRequest="60"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Start"
+                                                LoadingPlaceholder="marvel" 
+                                                Aspect="AspectFill"
+                                                Source = "{Binding Thumbnail,
+                                                     Converter = {StaticResource thumbnailConverter}}" >
+                                               
+                                       </ffimageloading:CachedImage>
+
+
+
+                          </Frame>
+
+
+
+                                        <StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="1" Margin="5,0" Spacing="0" >
+                                            <Label Text="{Binding Title}"   FontFamily="Roboto-Bold"  LineBreakMode="TailTruncation"  TextColor="{StaticResource GrayCustom}" FontSize="16" />
+                                            <Label Text="{Binding Description}" FontFamily="Roboto-Regular" LineBreakMode="TailTruncation" Style="{DynamicResource ListItemDetailTextStyle}"  TextColor="{StaticResource GrayCustom}" FontSize="13" />
+                                        </StackLayout>
+
+                                     
+
+                                    </StackLayout>
+
+                           </Frame>
+
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			<!--<ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent" />-->
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

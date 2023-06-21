@@ -1,0 +1,5 @@
+﻿<Properties StartupConfiguration="{26A3BBC2-7C9C-4BD6-9225-D088FD89D7B1}|Default">
+  <MonoDevelop.Ide.ItemProperties.MarvelComics.Android PreferredExecutionTarget="Android.nexus_6_-_api_33" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.MarvelComics.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.61FD2969-134D-4403-B10B-21673939C154" />
+</Properties>

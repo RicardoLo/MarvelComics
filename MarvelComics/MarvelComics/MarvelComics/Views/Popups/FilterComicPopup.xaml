@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="MarvelComics.Views.Popups.FilterComicPopup">
+
+
+    <ContentPage.Content>
+         <Frame
+             VerticalOptions="Center"
+             Margin="70"
+             HorizontalOptions="Center"
+             HeightRequest="356"
+             CornerRadius="10"
+             BackgroundColor = "{StaticResource BlueCustom}"
+             Padding="5,5,5,5" >
+               <ListView x:Name="ListViewFilter" VerticalScrollBarVisibility="Never" HasUnevenRows="False" SeparatorVisibility="Default" BackgroundColor="{StaticResource BlueCustom}" ItemSelected="OnItemFilterSelected"  ItemsSource="{Binding FilterComicItems}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>  
+                        <ViewCell >
+                            <StackLayout Spacing="10" x:Name="layout" Orientation="Horizontal" Margin="10" >
+                                <Image Source="{Binding IconSource}"  WidthRequest="30" HeightRequest="30" VerticalOptions="Center" />
+                                <Label Text="{Binding Title}"    FontFamily="Roboto-Regular" FontSize="16" TextColor="{StaticResource WhiteCustom}" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+         </Frame>
+    </ContentPage.Content>
+</popup:PopupPage>
+
